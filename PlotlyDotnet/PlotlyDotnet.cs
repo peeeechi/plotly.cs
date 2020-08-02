@@ -35,7 +35,8 @@ namespace PlotlyDotnet
                 dataString = sb.ToString();
             }
 
-            var plotlyLibString = new StreamReader("PlotlyDotnet/assets/plotly-v1.54.7.js").ReadToEnd();
+            // var plotlyLibString = new StreamReader("PlotlyDotnet/assets/plotly-v1.54.7.js").ReadToEnd();
+            var plotlyLibString = enc.GetString(Assets.PlotlyLibBin);
 
             var vm = new PlotlyViewModel
             {
@@ -48,7 +49,8 @@ namespace PlotlyDotnet
 
             DotLiquidFunctions.RegisterViewModel(typeof(PlotlyViewModel));
 
-            var temp = new StreamReader("PlotlyDotnet/index.html").ReadToEnd();
+            // var temp = new StreamReader("PlotlyDotnet/index.html").ReadToEnd();
+            var temp = enc.GetString(Assets.TempBin);
             var template = DotLiquid.Template.Parse(temp);
 
             var result = template.RenderViewModel(vm);
@@ -68,7 +70,7 @@ namespace PlotlyDotnet
                 sw.Write(result);
             }
 
-            System.Diagnostics.Process.Start(fileName);
+            // System.Diagnostics.Process.Start(fileName);
         }
     }
 }
