@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PlotlyDotnet
 {
-    public class Trace<T> : ITraceData
+    public class TraceData<T> : ITraceData
     {
         protected IEnumerable<T> _data;
 
@@ -33,7 +33,7 @@ namespace PlotlyDotnet
             }
         }
 
-        public Trace(IEnumerable<T> data)
+        public TraceData(IEnumerable<T> data)
         {
             if (!IsValidType)
             {
@@ -82,5 +82,21 @@ namespace PlotlyDotnet
             return sb.ToString();
            
         }
+    }
+
+    public static class TraceData
+    {
+        public static TraceData<byte> CreateFromEnumerator(IEnumerable<byte> data) { return new TraceData<byte>(data); }
+        public static TraceData<sbyte> CreateFromEnumerator(IEnumerable<sbyte> data) { return new TraceData<sbyte>(data); }
+        public static TraceData<Int16> CreateFromEnumerator(IEnumerable<Int16> data) { return new TraceData<Int16>(data); }
+        public static TraceData<UInt16> CreateFromEnumerator(IEnumerable<UInt16> data) { return new TraceData<UInt16>(data); }
+        public static TraceData<Int32> CreateFromEnumerator(IEnumerable<Int32> data) { return new TraceData<Int32>(data); }
+        public static TraceData<UInt32> CreateFromEnumerator(IEnumerable<UInt32> data) { return new TraceData<UInt32>(data); }
+        public static TraceData<Int64> CreateFromEnumerator(IEnumerable<Int64> data) { return new TraceData<Int64>(data); }
+        public static TraceData<UInt64> CreateFromEnumerator(IEnumerable<UInt64> data) { return new TraceData<UInt64>(data); }
+        public static TraceData<decimal> CreateFromEnumerator(IEnumerable<decimal> data) { return new TraceData<decimal>(data); }
+        public static TraceData<float> CreateFromEnumerator(IEnumerable<float> data) { return new TraceData<float>(data); }
+        public static TraceData<double> CreateFromEnumerator(IEnumerable<double> data) { return new TraceData<double>(data); }
+        public static TraceData<string> CreateFromEnumerator(IEnumerable<string> data) { return new TraceData<string>(data); }
     }
 }

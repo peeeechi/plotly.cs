@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PlotlyDotnet
 {
-    public abstract class TraceBase<Tx,Ty>: JavaScriptObjectBase, ITrace<Tx,Ty>
+    public abstract class TraceBase: JavaScriptObjectBase, ITrace
     {
         public TraceBase()
         {
@@ -20,16 +20,16 @@ namespace PlotlyDotnet
         /// <summary>
         /// X値 を設定します
         /// </summary>
-        public IEnumerable<Tx> X { set =>  this._dataDict[nameof(TraceBase<Tx,Ty>.X).ToLower()] = new Trace<Tx>(value); }
+        public ITraceData X { set =>  this._dataDict[nameof(TraceBase.X).ToLower()] = value; }
 
         /// <summary>
         /// Y値 を設定します
         /// </summary>
-        public IEnumerable<Ty> Y { set =>  this._dataDict[nameof(TraceBase<Tx,Ty>.Y).ToLower()] = new Trace<Ty>(value);  }
+        public ITraceData Y { set =>  this._dataDict[nameof(TraceBase.Y).ToLower()] = value;  }
 
         /// <summary>
         /// Trace 名 を取得、設定します
         /// </summary>
-        public string Name { get => (this._dataDict.ContainsKey(nameof(TraceBase<Tx,Ty>.Name).ToLower()))? this._dataDict[nameof(TraceBase<Tx,Ty>.Name).ToLower()].ToString() : null; set => this._dataDict[nameof(TraceBase<Tx,Ty>.Name).ToLower()] = value; }
+        public string Name { get => (this._dataDict.ContainsKey(nameof(TraceBase.Name).ToLower()))? this._dataDict[nameof(TraceBase.Name).ToLower()].ToString() : null; set => this._dataDict[nameof(TraceBase.Name).ToLower()] = value; }
     }
 }
